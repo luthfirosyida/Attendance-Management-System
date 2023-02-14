@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" th:href="@{/img/user.png}" />
+
+    <!-- Generate CSRF Token For AJAX -->
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- Datables CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css"
+    />
+
+    <!-- tambahan -->
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Noto+Sans:300,400,500,600,700,800|PT+Mono:300,400,500,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link th:href="@{/assets/css/nucleo-icons.css}" rel="stylesheet" />
+  <link th:href="@{/assets/css/nucleo-svg.css}" rel="stylesheet"/>
+    <!-- hehe -->
+
+  <!-- tambahan2 -->
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Noto+Sans:300,400,500,600,700,800|PT+Mono:300,400,500,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link th:href="@{/assets/css/nucleo-icons.css}" rel="stylesheet" />
+  <link th:href="@{/assets/css/nucleo-svg.css}" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/349ee9c857.js" crossorigin="anonymous"></script>
+  <link th:href="@{/assets/css/nucleo-svg.css}" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" th:href="@{/assets/css/corporate-ui-dashboard.css?v=1.0.}" rel="stylesheet" />
+  <!-- hhe -->
+
+  <!-- DATATABLE REFERENCE -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.14/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,800&display=swap" rel="stylesheet">
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.14/js/jquery.dataTables.min.js"></script>
+
+ -->
+ <link rel="stylesheet" th:href="@{/css/datatable.css}">
+ <link href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+ <!-- <link rel="stylesheet" th:href="@{/css/capture.css}" /> -->
+
+
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/349ee9c857.js" crossorigin="anonymous"></script>
+  <link th:href="@{/assets/css/nucleo-svg.css}" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" th:href="@{/assets/css/corporate-ui-dashboard.css?v=1.0.0}" rel="stylesheet" />
+
+    <title>MCC72</title>
+    <script src="https://kit.fontawesome.com/fa2235913c.js" crossorigin="anonymous"></script>
+  </head>
+  <body  class="g-sidenav-show  bg-gray-100">
+    <div th:replace="components/sidebar2 :: sidebar2"></div>
+    <!-- <div th:replace="table/datatable :: datatable"></div> -->
+    
+
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+      <nav th:replace="components/navbar :: navbar"></nav>
+<!--  <div class="wrapper">-->
+<!-- 
+      <div class="col-md-6">
+        <div th:replace="components/sidebar :: sidebar"></div>
+      </div> -->
+      <!-- <div class="col-md-6">
+        <div th:replace="components/navbar :: navbar"></div>
+      </div> -->
+      <!-- <div class="row">
+        <div class="col-lg-2">
+
+        </div> -->
+        <!-- <div class="col-lg-10">
+        <div th:replace="components/table :: table"></div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <div th:replace="fileupload/upload_form :: upload_form"></div>
+          </div>
+          <div class="col-md-4 table-con">
+            <div th:replace="fileupload/update-form :: update-form"></div>
+          </div>
+          <div class="col-md-6 table-con">
+            <div th:replace="overtime/index :: overtime"></div> -->
+
+
+
+      <!-- <div th:replace="components/sidebar :: sidebar"></div> -->
+<!--       <div id="content">-->
+        <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid" >
+            <button type="button" id="sidebarCollapse" class="btn btn-info">
+              <i class="fas fa-align-left"></i>
+            </button>
+            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fas fa-align-justify"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Page</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Page</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Page</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Page</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <a href="" class="mx-2"><i class="fa fa-bell"></i></a>
+              <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle btn-profile" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                  <span th:text="${#authentication.getName()}"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-lg-end">
+                  <li>
+                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changePassModal"><i class="fa fa-key"></i> Change Password</a>
+                  </li>
+                  <li>
+                    <form th:action="@{/logout}" method="POST">
+                      <button type="submit" class="dropdown-item"><i class="fa fa-sign-out"></i>  Logout</a></button>
+                    </form>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>  -->
+      <div class="container-fluid py-4 px-5">
+        <section layout:fragment="content"></section>
+      </div>
+<!--      </div>-->
+<!--    </div>-->
+  </main>
+    <!-- <div th:replace="components/carrousel :: carrousel"></div> -->
+
+
+    <!-- JQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<!--    &lt;!&ndash; Option 1: Bootstrap Bundle with Popper &ndash;&gt;-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Datatables JS -->
+    <!--    <script-->
+    <!--      type="text/javascript"-->
+    <!--      charset="utf8"-->
+    <!--      src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"-->
+    <!--    ></script>-->
+
+     <!--   tambahan   -->
+     <script th:src="@{/assets/js/core/popper.min.js}"></script>
+     <script th:src="@{/assets/js/core/bootstrap.min.js}"></script>
+     <script th:src="@{/assets/js/plugins/perfect-scrollbar.min.js}"></script>
+     <script th:src="@{/assets/js/plugins/smooth-scrollbar.min.js}"></script>
+     <script th:src="@{/assets/js/plugins/chartjs.min.js}"></script>
+     <script th:src="@{/assets/js/plugins/swiper-bundle.min.js}" type="text/javascript"></script>
+
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  
+  <!-- Control Center for Corporate UI Dashboard: parallax effects, scripts for the example pages etc -->
+  <script th:src="@{/assets/js/corporate-ui-dashboard.min.js?v=1.0.}"></script>
+<!--  <script th:src="@{/js/datatable.js}"></script>-->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!--    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>-->
+    <section layout:fragment="script"></section>
+  </body>
+</html>

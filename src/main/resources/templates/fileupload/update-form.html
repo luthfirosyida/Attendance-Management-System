@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!-- <html xmlns:th="http://www.thymeleaf.org"> -->
+  <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/main}">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0" />
+  <title>Update Overtime Request</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+  <link  rel="stylesheet" th:href="@{/css/entity.css}">
+  
+</head>
+
+<body>
+    <section layout:fragment="content">
+    <!-- <div class="container" style="margin-top: 30px; margin-right: 230px;">
+        <div th:replace="components/navbar :: navbar"></div>
+    </div> -->
+    <div class="container" style="max-width: 1000px; margin-top: 30px;">
+    <div class="table-con">
+    <h3 class="mb-3">Update Overtime Request</h3>
+
+    <form
+        th:method="put"
+        th:action="@{/overtime/update/{id} (id = ${id})}"
+        th:object="${overtimeDTO}"
+        enctype="multipart/form-data">
+
+        <label for="projectList" class="form-label">Project</label>
+        <select class="form-control" id="update-projectList" th:field="*{projectId}">
+        <option th:each="project : ${projects}" th:value="${project.id}" th:text="${project.name}"></option>
+        <option value="0" disabled selected>Choose Project Name</option>
+        </select>
+
+        
+        <input class="form-control" type="hidden" id="update-overtime-id" th:value="${id}">
+        <label for="start-time" class="form-label">Start Time</label>
+        <input id="update-overtime-start-time" class="form-control" type="datetime-local" th:field="*{start_time}">
+
+        <label for="end-time" class="form-label">End Time</label>
+        <input id="update-overtime-end-time" class="form-control" type="datetime-local" th:field="*{end_time}">
+        
+        <label for="description" class="form-label">Description</label>
+        <textarea id="update-overtime-description" class="form-control" type="text" th:field="*{description}"></textarea>
+        
+        <label for="CV" class="form-label">Attachment</label>
+        <input id="update-overtime-attachment" class="form-control" type="file" name="input-attachment"/>
+        <span th:text="*{attachment}"></span>
+        
+        <br>
+        <button class="btn btn-sm btn-outline-dark float-right" style="border-radius: 20px; margin-left: 20px; " type="submit">
+          Submit
+        </button>
+        <a class="btn btn-sm btn-outline-dark float-right"  style="border-radius: 20px; " onclick="saveUpdateAsDraft()">
+          Save as Draft
+        </a>
+        <br>
+
+    </form>
+
+  </div>
+
+    <div
+        th:if="${message != null}"
+        class="alert alert-secondary alert-dismissible fade show text-center message mt-3"
+        role="alert">
+        [[${message}]]
+        <button type="button" class="close btn-sm" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+    </div>
+  </div>
+  </section>
+  
+  <section layout:fragment="script">
+    <!-- JQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script th:src="@{/js/csrfToken.js}"></script>
+    <script th:src="@{/js/create-overtime.js}"></script>
+    </section>
+</body>
+
+</html>

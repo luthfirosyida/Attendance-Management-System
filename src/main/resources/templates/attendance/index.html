@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main}">
+<head>
+    <title>Attendance</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" th:href="@{/img/country.png}">
+
+    <!-- Generate CSRF Token For AJAX -->
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!-- Datables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+    <link  rel="stylesheet" th:href="@{/css/style4.css}">
+    <link  rel="stylesheet" th:href="@{/css/entity.css}">
+    <link  rel="stylesheet" th:href="@{/css/detail-request.css}">
+    <link  rel="stylesheet" th:href="@{/css/datatable.css}">
+    <link  rel="stylesheet" th:href="@{/assets/css/corporate-ui-dashboard.css.css}">
+   
+
+</head>
+
+<body>
+<section layout:fragment="content">
+
+    <!-- Content -->
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h3 class="my-4 fw-bold">List of Attendance History</h3>
+            <a th:href="@{/attendance/create}" class="btn btn-outline-dark" style="border-radius: 20px;">+ Add Attendance</a>
+        </div>
+        <div class="table-con main-datatable" style="padding: 1em;" >
+            <table class="table cust-datatable dataTable no-footer" id="table-attendance" style="margin-top: 20px;">
+                <thead>
+                <tr>
+                    <!-- <th class="col-1 title">ID</th> -->
+                    <th class="col-1 title">No</th>
+                    <th class="col-2 title">Date</th>
+                    <th class="col-2 title">Body Temperature</th>
+                    <th class="col-2 title">Workplace</th>
+                    <th class="col-1 title">Description</th>
+                    <th class="col-2 title">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal Detail Project -->
+    <div class="modal fade bd-example-modal-lg" id="detailAttendance" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header"  style="background-color:rgb(15, 23, 42);;">
+                    <h5 class="modal-title title" id="exampleModalLabel">Detail Attendance</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex gap-3">
+                    <div class="row ">
+                        <!-- Section: Timeline -->
+                        <!-- <h5>Timeline Submission</h5>
+                        <section class="py-5 d-flex justify-content-center align-items-center" >
+                            <ul class="timeline-with-icons" id="timeline"></ul> 
+                        </section> -->
+                        <section class="py-5 d-flex justify-content-center align-items-center" >
+                            <div style="margin-left: 50px;">
+                                <!-- <h5>Detail Attendance</h5> -->
+                                <table style="min-width: 500px;">
+                                    <!-- <tr> 
+                                        <td>Employee</td>
+                                        <td>:</td>
+                                        <td><span id="attendance-employee"></span></td>
+                                    </tr> -->
+                                    <tr> 
+                                        <td>Date</td>
+                                        <td>:</td>
+                                        <td><span id="attendance-date"></span></td>
+                                    </tr>
+                                    <tr> 
+                                        <td>Body Temperature</td>
+                                        <td>:</td>
+                                        <td><span id="attendance-body-temperature"></span></td>
+                                    </tr>
+                                    <tr> 
+                                        <td>Workplace</td>
+                                        <td>:</td>
+                                        <td><span id="attendance-workplace"></span></td>
+                                    </tr>
+                                    <tr> 
+                                        <td>Description</td>
+                                        <td>:</td>
+                                        <td><span id="attendance-description"></span></td>
+                                    </tr>
+                                    </table>
+                            </div>
+                            </div>
+                        </section>
+      <!-- Section: Timeline -->
+                        <!-- <div class="table-con justify-content-center align-items-center" style="width: 500px; align-items: center;">
+                        
+                        <table style="min-width: 500px;">
+                            <tr> 
+                                <td>Requester</td>
+                                <td>:</td>
+                                <td><span id="attendance-requester"></span></td>
+                            </tr>
+                            <tr> 
+                                <td>Project</td>
+                                <td>:</td>
+                                <td><span id="attendance-project"></span></td>
+                            </tr>
+                            <tr> 
+                                <td>Start Time</td>
+                                <td>:</td>
+                                <td><span id="attendance-start-time"></span></td>
+                            </tr>
+                            <tr> 
+                                <td>End Time</td>
+                                <td>:</td>
+                                <td><span id="attendance-end-time"></span></td>
+                            </tr>
+                            <tr> 
+                                <td>Total Hour</td>
+                                <td>:</td>
+                                <td><span id="attendance-total-hour"></span></td>
+                            </tr>
+                            <tr> 
+                                <td>Description</td>
+                                <td>:</td>
+                                <td><span id="attendance-description"></span></td>
+                            </tr>
+                            </table>
+                        </div> -->
+                        
+                            <!-- <h5 id="attendance-requester"></h5> -->
+                            <!-- <h5 id="attendance-project"></h5>
+                            <h5 id="attendance-start-time"></h5>
+                            <h5 id="attendance-end-time"></h5>
+                            <h5 id="attendance-total-hour"></h5>
+                            <h5 id="attendance-description"></h5> -->
+                        
+                    </div>
+    
+                </div>
+                <!-- <div class="modal-footer" style="color:rgb(15, 23, 42);">
+                    <button type="button" class="btn-delete" data-bs-dismiss="modal">Close</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section layout:fragment="script">
+<!-- JQuery CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+<!-- Datatables JS -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js">
+</script>
+<script src="https://kit.fontawesome.com/fa2235913c.js" crossorigin="anonymous"></script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script th:src="@{js/csrfToken.js}"></script>
+    <script th:src="@{js/attendance.js}"></script>
+</section>
+</body>
+</html>

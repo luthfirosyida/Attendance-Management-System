@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/main}">
+
+<head>
+    <title>Dashboard</title>
+    <link rel="icon" th:href="@{/img/Dashboard.png}" style="margin-left: 30px;">
+   <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+   <link rel="stylesheet" th:href="@{/css/datatable.css}">
+   <link rel="stylesheet" th:href="@{/css/datenow.css}">
+  <link href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+</head>
+
+<body onload="initClock()">
+    <!-- <div th:replace="components/navbar :: navbar"></div> -->
+    <!-- <div th:replace="components/sidebar :: sidebar"></div> -->
+    <!-- <div th:replace="components/carrousel :: carrousel"></div> -->
+    <section th:replace="layout/main"></section>
+    <section layout:fragment="content">
+    
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center" style="margin-bottom: 20px;">
+        <div class="col-md-8">
+          <div id="hello"> Hello, wellcome back <span id="user-db" th:text="${#authentication.getName()}"></span></div>
+        </div>
+        <div class="col-md-4">
+          <div class="datetime">
+            <div class="date">
+              <span id="dayname">Day</span>,
+              <span id="month">Month</span>
+              <span id="daynum">00</span>,
+              <span id="year">Year</span>
+            </div>
+            <div class="time">
+              <span id="hour">00</span>:
+              <span id="minutes">00</span>:
+              <span id="seconds">00</span>
+              <span id="period">AM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="myCarousel" class="carousel slide h-100" data-bs-ride="carousel" style="height: 100x; margin-bottom: 30px;">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img th:src="@{/img-car/5.svg}" alt="picture" width="1000px" height="300px" style="margin-bottom: 10px;">
+
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#FFFFFF"/></svg>
+    
+            <div class="container">
+              <div class="carousel-caption text-start">
+                <h4 style="margin-top: 10px;">Get an efficient Attendance Management System to Monitor Employee.</h4>
+                <p style="color: black;"> . </p>
+                <p><a class="btn btn-lg btn-dark" href="webcam/capture-img.html">Get Started</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <!-- <img src="assets/img/pict2.jpg" alt="picture"> -->
+            <!-- <img th:src="@{/img-car/pict2.jpg}" alt="picture"> -->
+            <img th:src="@{/img-car/2.svg}" alt="picture" width="1000px" height="300px" style="margin-bottom: 10px;">
+
+
+
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#FFFFFF"/></svg>
+    
+            <div class="container">
+              <div class="carousel-caption">
+                <h3 style="margin-top: 10px;">Easy to adding attendance, everywhere you work.</h3>
+                <p>.</p>
+                <p><a class="btn btn-lg btn-dark" href="webcam/capture-img.html">Learn more</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <!-- <img src="assets/img/pict3.jpg" alt="picture"> -->
+            <!-- <img th:src="@{/img-car/pict3.jpg}" alt="picture"> -->
+            <img th:src="@{/img-car/3.svg}" alt="picture" width="1000px" height="300px">
+
+
+
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#FFFFFF"/></svg>
+            <div class="container">
+              <div class="carousel-caption text-end">
+                <h3>Monitored attendance with only 1 tool</h3>
+                <p> .</p>
+                <p><a class="btn btn-lg btn-dark" href="webcam/capture-img.html">Add Attendance</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+        <div class="row" sec:authorize="hasRole('EMPLOYEE')">
+            <div class="col-xl-6 col-sm-6 mb-xl-0">
+              <div class="card border shadow-xs mb-4" style="cursor: pointer;" onclick="location.href='/attendance/capture'"> 
+                <div class="card-body text-start p-3 w-100">
+                  <div class="icon icon-shape icon-sm bg-dark text-white text-center border-radius-sm d-flex align-items-center justify-content-center mb-3"> 
+                    <span><i class="fa-solid fa-file" style="font-size: 16px;"></i></span>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="w-100">
+                        <p class="text-sm text-secondary mb-1">Add Attendance</p>
+                        <h4 class="mb-2 font-weight-bold"><span th:text="${count_draft}"> Request </span></h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-sm-6 mb-xl-0">
+              <div class="card border shadow-xs mb-4" style="cursor: pointer;" onclick="location.href='/attendance'">
+                <div class="card-body text-start p-3 w-100">
+                  <div class="icon icon-shape icon-sm bg-dark text-white text-center border-radius-sm d-flex align-items-center justify-content-center mb-3">
+                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path fill-rule="evenodd" d="M7.5 5.25a3 3 0 013-3h3a3 3 0 013 3v.205c.933.085 1.857.197 2.774.334 1.454.218 2.476 1.483 2.476 2.917v3.033c0 1.211-.734 2.352-1.936 2.752A24.726 24.726 0 0112 15.75c-2.73 0-5.357-.442-7.814-1.259-1.202-.4-1.936-1.541-1.936-2.752V8.706c0-1.434 1.022-2.7 2.476-2.917A48.814 48.814 0 017.5 5.455V5.25zm7.5 0v.09a49.488 49.488 0 00-6 0v-.09a1.5 1.5 0 011.5-1.5h3a1.5 1.5 0 011.5 1.5zm-3 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" />
+                      <path d="M3 18.4v-2.796a4.3 4.3 0 00.713.31A26.226 26.226 0 0012 17.25c2.892 0 5.68-.468 8.287-1.335.252-.084.49-.189.713-.311V18.4c0 1.452-1.047 2.728-2.523 2.923-2.12.282-4.282.427-6.477.427a49.19 49.19 0 01-6.477-.427C4.047 21.128 3 19.852 3 18.4z" />
+                    </svg>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="w-100">
+                        <p class="text-sm text-secondary mb-1">List of Attendance</p>
+                        <h4 class="mb-2 font-weight-bold"><span th:text="${count_submitted}"></span></h4>
+                        <div class="d-flex align-items-center">
+<!--                          <span class="text-sm text-success font-weight-bolder">-->
+<!--                            <i class="fa fa-chevron-up text-xs me-1"></i>55%-->
+<!--                          </span>-->
+<!--                          <span class="text-sm ms-1">from 243</span>-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+         
+<!--            <div class="col-xl-3 col-sm-6">-->
+<!--              <div class="card border shadow-xs mb-4">-->
+<!--                <div class="card-body text-start p-3 w-100">-->
+<!--                  <div class="icon icon-shape icon-sm bg-dark text-white text-center border-radius-sm d-flex align-items-center justify-content-center mb-3">-->
+<!--                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">-->
+<!--                      <path fill-rule="evenodd" d="M5.25 2.25a3 3 0 00-3 3v4.318a3 3 0 00.879 2.121l9.58 9.581c.92.92 2.39 1.186 3.548.428a18.849 18.849 0 005.441-5.44c.758-1.16.492-2.629-.428-3.548l-9.58-9.581a3 3 0 00-2.122-.879H5.25zM6.375 7.5a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z" clip-rule="evenodd" />-->
+<!--                    </svg>-->
+<!--                  </div>-->
+<!--                  <div class="row">-->
+<!--                    <div class="col-12">-->
+<!--                      <div class="w-100">-->
+<!--                        <p class="text-sm text-secondary mb-1">Coupon Sales</p>-->
+<!--                        <h4 class="mb-2 font-weight-bold">$23,364.55</h4>-->
+<!--                        <div class="d-flex align-items-center">-->
+<!--&lt;!&ndash;                          <span class="text-sm text-success font-weight-bolder">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fa fa-chevron-up text-xs me-1"></i>18%&ndash;&gt;-->
+<!--&lt;!&ndash;                          </span>&ndash;&gt;-->
+<!--&lt;!&ndash;                          <span class="text-sm ms-1">from $19,800.40</span>&ndash;&gt;-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+         
+   
+
+          
+        
+    </div>
+
+    <div class="container">
+<!--        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">-->
+<!--            <div class="carousel-inner">-->
+<!--              <div class="carousel-item active" data-bs-interval="10000">-->
+<!--                <img src="img/dashboard.png" class="d-block w-100" alt="dashboard">-->
+<!--              </div>-->
+<!--              <div class="carousel-item" data-bs-interval="2000">-->
+<!--                <img src="img/country.png" class="d-block w-100" alt="country">-->
+<!--              </div>-->
+<!--              <div class="carousel-item">-->
+<!--                <img src="img/job.png" class="d-block w-100" alt="job">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">-->
+<!--              <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--              <span class="visually-hidden">Previous</span>-->
+<!--            </button>-->
+<!--            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">-->
+<!--              <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+<!--              <span class="visually-hidden">Next</span>-->
+<!--            </button>-->
+<!--          </div>-->
+
+        <!-- <main class="grid">
+            <article>
+                <img src="img/region.png" width="100px" height="100px">
+                <div class="konten">
+                    <h3 href="https://www.remove.bg/upload"> Region </h3>
+                    <button type="button" class="btn" data-bs-toggle="modal" onclick="showDataRegion()">Show Data</button>
+                </div>
+            </article>
+
+            <article>
+                <img src="img/country.png" width="200px" height="200px">
+                <div class="konten">
+                    <h3> Country </h3>
+                    <button type="button" class="btn" data-bs-toggle="modal" onclick="showDataCountry()">Show Data</button>
+                </div>
+            </article>
+
+            <article>
+                <img src="img/location.png" width="200px" height="200px">
+                <div class="konten">
+                    <h3> Location </h3>
+                    <button type="button" class="btn" data-bs-toggle="modal" onclick="showDataLocation()">Show Data</button>
+                </div>
+            </article>
+
+
+            <article>
+                <img src="img/department.png" width="200px" height="200px">
+                <div class="konten">
+                    <h3> Department </h3>
+                    <button type="button" class="btn" data-bs-toggle="modal" onclick="showDataDepartment()">Show Data</button>
+                </div>
+            </article>
+
+
+            <article>
+                <img src="img/employee.png" width="200px" height="200">
+                <div class="konten">
+                    <h3> Employee </h3>
+                    <button type="button" class="btn" data-bs-toggle="modal" onclick="showDataEmployee()">Show Data</button>
+                </div>
+            </article>
+
+
+            <article>
+                <img src="img/job.png" width="200px" height="200">
+                <div class="konten">
+                    <h3> Job </h3>
+                    <button type="button" class="btn" data-bs-toggle="modal" onclick="showDataJob()">Show Data</button>
+                </div>
+            </article>
+
+
+            <article>
+                <img src="img/job history.png" width="200px" height="200">
+                <div class="konten">
+                    <h3> Job History </h3>
+                    <button type="button" class="btn" data-bs-toggle="modal" onclick="showDataJobHistory()">Show Data</button>
+                    </button>
+                </div>
+            </article>
+        </main> -->
+
+    </div>
+    </section>
+    <section layout:fragment="script">
+    <!-- JQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- Fontawesome JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script th:src="@{js/logout.js}"></script>
+    <script th:src="@{js/datenow.js}"></script>
+
+    <!-- JS -->
+    <script src="https://kit.fontawesome.com/41b710fddc.js" crossorigin="anonymous"></script>
+  </section>
+</body>
+
+</html>

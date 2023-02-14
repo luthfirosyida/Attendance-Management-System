@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* html {
+    font-size: 62.5%;
+} */
+
+body {
+/* background-color:rgb(15, 23, 42); */
+background: linear-gradient(rgba(0, 0, 0, 0.51), transparent), url('/img/Artboard-1.png');
+/* background-image: -webkit-image-set(); */
+/* background-image: url(""); */
+/* background: #EFEFBB;
+background: -webkit-linear-gradient(to right, #D4D3DD, #EFEFBB);
+background: linear-gradient(to right, #D4D3DD, #EFEFBB); */
+
+}
+
+h3 {
+    font-family: 'Sacramento', cursive;
+    font-size: 3rem;
+    font-weight: bold;
+}
+.login {
+    height: 100vh;
+    /* background: linear-gradient(34deg, rgba(34, 193, 195, 1) 9%, rgb(219, 178, 90) 92%); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 200px;
+   
+  
+}
+
+.login h1 {
+    font-weight: bolder;
+}
+
+.form-login {
+    padding: 3rem 2.5rem;
+    min-height: 42vh;
+    width: 40vw;
+    background: white;
+    /* border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem; */
+    /* box-shadow: 0.8rem 0.6rem 0.45rem black; */
+    border-radius: 2rem;
+}
+
+.btn-login {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1.8rem;
+    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border-radius: 2rem;
+}
+
+.btn-login:hover {
+    padding: 0.6rem 2rem;
+    font-weight: bold;
+    background:white;
+    color: black;
+}
+
+#img-fluid {
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    margin-top: 6rem;
+    /* display: flex; */
+    margin-left:300px;
+
+    right: 0%;
+  
+}
+h2 {
+    margin-left:380px;
+    /* font-family: 'Sacramento', cursive; */
+    /* font-size: 3rem; */
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.7rem;
+  
+    
+}
+
+
+#input-user {
+    background-color: white;
+    border-radius: 2rem;
+}
+
+#input-pw {
+    background-color: white;
+    border-radius: 2rem;
+}
+
+/* #login-card {
+    /* position: absolute; */
+    height: 100px;
+    top: 0;
+    position: absolute;
+    left: 50%;
+    top: 15%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+} */
